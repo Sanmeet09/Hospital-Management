@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <!--    form View-->
+    <record id="patient_details_form_view" model="ir.ui.view">
+        <field name="name">patient.details.form.view</field>
+        <field name="model">patients.details</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="patient_name"/>
+                            <field name="description"/>
+                            <field name="gender"/>
+                        </group>
+                        <group>
+                            <field name="age"/>
+
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--    Tree View-->
+    <record id="patient_details_tree_view" model="ir.ui.view">
+        <field name="name">patient.details.tree.view</field>
+        <field name="model">patients.details</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="patient_name"/>
+                <field name="description"/>
+                <field name="gender"/>
+                <field name="age"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <!--    Action -->
+    <record id="patient_details_action" model="ir.actions.act_window">
+        <field name="name">Patient Details</field>
+        <field name="res_model">patients.details</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="menu_patient_details_root" name="Hospital Management"/>
+    <menuitem id="menu_patient_details_root_child" name="Patients Details" action="patient_details_action"
+              parent="menu_patient_details_root"/>
+</odoo>

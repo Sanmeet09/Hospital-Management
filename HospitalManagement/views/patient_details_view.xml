@@ -21,7 +21,8 @@
                         </group>
                         <group>
                             <field name="age"/>
-
+                            <field name="phone_no"/>
+                            <field name="doctors_id"/>
                         </group>
                     </group>
 
@@ -41,7 +42,8 @@
                 <field name="description"/>
                 <field name="gender"/>
                 <field name="age"/>
-
+                <field name="phone_no"/>
+                <field name="doctors_id"/>
             </tree>
         </field>
     </record>
@@ -57,4 +59,5 @@
     <menuitem id="menu_patient_details_root" name="Hospital Management"/>
     <menuitem id="menu_patient_details_root_child" name="Patients Details" action="patient_details_action"
               parent="menu_patient_details_root"/>
+    <menuitem id="menu_all_patients_details_child" name="Patients" action="patient_details_action" parent="menu_patient_details_root_child" />
 </odoo>

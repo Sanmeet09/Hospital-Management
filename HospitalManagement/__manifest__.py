@@ -12,7 +12,8 @@
     'data': [
         'data/sequence.xml',
         'security/ir.model.access.csv',
-        'views/patient_details_view.xml'
+        'views/patient_details_view.xml',
+        'views/doctors_details_view.xml'
     ],
     'demo': [
 

@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 patients_details,patients.details,model_patients_details,base.group_user,1,1,1,1
+doctors_details,doctors.details,model_doctors_details,base.group_user,1,1,1,1
+doctors_details_line,doctors.details.line,model_doctors_details_line,base.group_user,1,1,1,1

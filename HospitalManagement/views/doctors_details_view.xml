@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <!--    form View-->
+    <record id="doctors_details_form_view" model="ir.ui.view">
+        <field name="name">doctors.details.form.view</field>
+        <field name="model">doctors.details</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Search Patient" type="object" name="create_patients"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="doctors_name"/>
+                            <field name="description"/>
+                            <field name="gender"/>
+                        </group>
+                        <group>
+                            <field name="age"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="Doctor_line" string="Patients">
+                            <field name="doctors_ids">
+                                <form>
+                                    <group>
+                                        <field name="patient_name"/>
+                                        <field name="age"/>
+                                        <field name="gender"/>
+                                        <field name="name"/>
+                                    </group>
+                                </form>
+                                <tree>
+                                    <field name="patient_name"/>
+                                    <field name="age"/>
+                                    <field name="gender"/>
+                                    <field name="name"/>
+
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--    Tree View-->
+    <record id="doctors_details_tree_view" model="ir.ui.view">
+        <field name="name">doctors.details.tree.view</field>
+        <field name="model">doctors.details</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="doctors_name"/>
+                <field name="description"/>
+                <field name="gender"/>
+                <field name="age"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--    Action -->
+    <record id="doctors_details_action" model="ir.actions.act_window">
+        <field name="name">Doctors Details</field>
+        <field name="res_model">doctors.details</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="menu_doctors_details_root_child" name="Doctor's Details" action="doctors_details_action"
+              parent="menu_patient_details_root"/>
+
+</odoo>

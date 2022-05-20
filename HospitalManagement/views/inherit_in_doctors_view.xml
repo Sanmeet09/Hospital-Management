@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <!--    form view-->
+    <record id="inherit_doctors_form_view" model="ir.ui.view">
+        <field name="name">inherit.doctors.form.view</field>
+        <field name="model">doctors.details</field>
+        <field name="inherit_id" ref="HospitalManagement.doctors_details_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='age']" position="after">
+                <field name="phone_no"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!--    tree view-->
+    <record id="inherit_doctors_tree_view" model="ir.ui.view">
+        <field name="name">inherit.doctors.tree.view</field>
+        <field name="model">doctors.details</field>
+        <field name="inherit_id" ref="HospitalManagement.doctors_details_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='age']" position="after">
+                <field name="phone_no"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

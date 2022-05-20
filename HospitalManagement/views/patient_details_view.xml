@@ -7,6 +7,9 @@
         <field name="model">patients.details</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button id="confirm_button" string="Confirm" confirm="Are you sure" name="action_confirm"/>
+                </header>
                 <sheet>
                     <div class="oe_title">
                         <h1>
@@ -17,7 +20,7 @@
                         <group>
                             <field name="patient_name"/>
                             <field name="description"/>
-                            <field name="gender"/>
+                            <field name="gender" invisible="context.get('hide_gender')"/>
                         </group>
                         <group>
                             <field name="age"/>
@@ -48,6 +51,18 @@
         </field>
     </record>
 
+    <record id="search_patient_by_gender" model="ir.ui.view">
+        <field name="name">search.patient.by.gender</field>
+        <field name="model">patients.details</field>
+        <field name="arch" type="xml">
+            <search string="Gender">
+                <filter string="Male" name="Male" domain="[('gender','=','M')]"/>
+                <filter string="Female" name="Female" domain="[('gender','=','F')]"/>
+            </search>
+        </field>
+
+    </record>
+
     <!--    Action -->
     <record id="patient_details_action" model="ir.actions.act_window">
         <field name="name">Patient Details</field>
@@ -59,5 +74,6 @@
     <menuitem id="menu_patient_details_root" name="Hospital Management"/>
     <menuitem id="menu_patient_details_root_child" name="Patients Details" action="patient_details_action"
               parent="menu_patient_details_root"/>
-    <menuitem id="menu_all_patients_details_child" name="Patients" action="patient_details_action" parent="menu_patient_details_root_child" />
+    <menuitem id="menu_all_patients_details_child" name="Patients" action="patient_details_action"
+              parent="menu_patient_details_root_child"/>
 </odoo>

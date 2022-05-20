@@ -12,8 +12,12 @@
     'data': [
         'data/sequence.xml',
         'security/ir.model.access.csv',
+        'wizards/patient_wizard.xml',
         'views/patient_details_view.xml',
-        'views/doctors_details_view.xml'
+        'views/doctors_details_view.xml',
+        'views/inherit_in_doctors_view.xml',
+        'views/gender_view.xml',
+
     ],
     'demo': [
 

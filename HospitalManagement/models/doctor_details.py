@@ -11,7 +11,7 @@ class DoctorsDetails(models.Model):
     age = fields.Integer('Age')
     gender = fields.Selection(selection=[('M', 'Male'), ('F', 'Female')], default='M', string='Gender')
     description = fields.Char('Description')
-
+    doctor_appointment = fields.Date('Date')
     doctors_ids = fields.One2many('doctors.details.line','doctors_id', 'doctor id')
 
     def create_patients(self):
@@ -35,3 +35,15 @@ class DoctorsDetailsLine(models.Model):
     age = fields.Integer(related='patient_name.age', string='Age')
     gender = fields.Selection(related='patient_name.gender', string='Gender')
     description = fields.Char('Description')
+
+
+
+
+
+# inheriting phone no
+
+class InheritInDoctorsDetails(models.Model):
+    _inherit = 'doctors.details'
+    _description = 'Inherit In doctors'
+
+    phone_no = fields.Char('Phone No', size=10)

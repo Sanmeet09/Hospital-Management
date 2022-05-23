@@ -12,5 +12,12 @@
             <field name="company_id" eval="False"/>
         </record>
 
+        <record id="seq_patient_appointment" model="ir.sequence">
+            <field name="name">appointment</field>
+            <field name="code">patient.appointment</field>
+            <field name="prefix">AP</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
     </data>
 </odoo>

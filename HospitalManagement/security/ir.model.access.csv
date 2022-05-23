@@ -3,3 +3,4 @@ patients_details,patients.details,model_patients_details,base.group_user,1,1,1,1
 doctors_details,doctors.details,model_doctors_details,base.group_user,1,1,1,1
 doctors_details_line,doctors.details.line,model_doctors_details_line,base.group_user,1,1,1,1
 wizard_patient,wizard.patient,model_wizard_patient,base.group_user,1,1,1,1
+patient_appointment,patient.appointment,model_patient_appointment,base.group_user,1,1,1,1

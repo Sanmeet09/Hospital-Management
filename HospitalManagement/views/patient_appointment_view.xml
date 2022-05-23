@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <!--    form View-->
+    <record id="patient_appointment_form_view" model="ir.ui.view">
+        <field name="name">patient.appointment.form.view</field>
+        <field name="model">patient.appointment</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                     <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="patient_name"/>
+                            <field name="age"/>
+                            <field name="gender" />
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="date_time"/>
+                            <field name="doctor_name" readonly="1" force_save="1" />   <!--force_save is use when we want to store forcefully or we have used onchange-->
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--    Tree View-->
+    <record id="patient_appointment_tree_view" model="ir.ui.view">
+        <field name="name">patient.appointment.tree.view</field>
+        <field name="model">patient.appointment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="patient_name"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="date"/>
+                <field name="date_time"/>
+                <field name="doctor_name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!--    Action -->
+    <record id="patient_appointment_action" model="ir.actions.act_window">
+        <field name="name">Appointment</field>
+        <field name="res_model">patient.appointment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="menu_doctors_appointment_root_child" name="Appointment" action="patient_appointment_action"
+              parent="menu_patient_details_root"/>
+</odoo>

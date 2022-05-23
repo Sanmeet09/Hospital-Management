@@ -13,17 +13,22 @@ class PatientsDetails(models.Model):
     description = fields.Char('Description')
     phone_no = fields.Char('Phone No', size=10)
     doctors_id = fields.Many2one('doctors.details', 'Doctor Name')
+    appointment_count = fields.Integer('Appointment Count', compute='compute_appointment_count')
+
+    def compute_appointment_count(self):
+        appointment_count = self.env['patient.appointment'].search_count([('patient_name', '=', self.id)])
+        self.appointment_count = appointment_count
 
     # This Function is used to create the sequence for the patient
-    # @api.model
-    # def create(self, vals):
-    #     if not vals.get('name') or vals['name'] == _('New'):
-    #         vals['name'] = self.env['ir.sequence'].next_by_code('patients.details') or _('New')
-    #     if vals.get('gender') == 'M':
-    #         vals['patient_name'] = 'Mr ' + vals['patient_name']
-    #     else:
-    #         vals['patient_name'] = 'Mrs ' + vals['patient_name']
-    #     return super(PatientsDetails, self).create(vals)
+    @api.model
+    def create(self, vals):
+        if not vals.get('name') or vals['name'] == _('New'):
+            vals['name'] = self.env['ir.sequence'].next_by_code('patients.details') or _('New')
+        if vals.get('gender') == 'M':
+            vals['patient_name'] = 'Mr ' + vals['patient_name']
+        else:
+            vals['patient_name'] = 'Mrs ' + vals['patient_name']
+        return super(PatientsDetails, self).create(vals)
 
     # def write(self, vals):
     #     patient_name = self.patient_name
@@ -79,37 +84,35 @@ class PatientsDetails(models.Model):
                 else:
                     rec.patient_name = rec.patient_name
 
-# @api.onchange('gender')
-# def editing_value(self):
-#     for rec in self:
-#         if rec.patient_name:
-#             if rec.gender == 'M':
-#                 name = rec.patient_name
-#                 if 'Mr ' or 'Mrs ' in rec.patient_name:
-#                     name.replace('mrs ', ' ')
-#                     print("after lstrip", name)
-#                     rec.prefix = 'mr'
-#                     full_name = rec.prefix + ' ' + name
-#                     rec.patient_name = full_name
-#                 else:
-#                     rec.prefix = 'mr'
-#                     full_name = rec.prefix + ' ' + name
-#                     rec.patient_name = full_name
-#             elif rec.gender == 'F':
-#                 name = rec.patient_name
-#                 if 'Mr ' or 'Mrs ' in rec.patient_name:
-#                     name.replace('mr ', ' ')
-#                     rec.prefix = 'mrs'
-#                     full_name = rec.prefix + ' ' + name
-#                     rec.patient_name = full_name
-#                 else:
-#                     rec.prefix = 'mrs'
-#                     full_name = rec.prefix + ' ' + name
-#                     rec.patient_name = full_name
-#             else:
-#                 rec.patient_name = rec.patient_name
-
-
+    # @api.onchange('gender')
+    # def editing_value(self):
+    #     for rec in self:
+    #         if rec.patient_name:
+    #             if rec.gender == 'M':
+    #                 name = rec.patient_name
+    #                 if 'Mr ' or 'Mrs ' in rec.patient_name:
+    #                     name.replace('mrs ', ' ')
+    #                     print("after lstrip", name)
+    #                     rec.prefix = 'mr'
+    #                     full_name = rec.prefix + ' ' + name
+    #                     rec.patient_name = full_name
+    #                 else:
+    #                     rec.prefix = 'mr'
+    #                     full_name = rec.prefix + ' ' + name
+    #                     rec.patient_name = full_name
+    #             elif rec.gender == 'F':
+    #                 name = rec.patient_name
+    #                 if 'Mr ' or 'Mrs ' in rec.patient_name:
+    #                     name.replace('mr ', ' ')
+    #                     rec.prefix = 'mrs'
+    #                     full_name = rec.prefix + ' ' + name
+    #                     rec.patient_name = full_name
+    #                 else:
+    #                     rec.prefix = 'mrs'
+    #                     full_name = rec.prefix + ' ' + name
+    #                     rec.patient_name = full_name
+    #             else:
+    #                 rec.patient_name = rec.patient_name
 
     def action_confirm(self):
         pass

@@ -24,6 +24,7 @@
                         </group>
                         <group>
                             <field name="age"/>
+                            <field name="appointment_count"/>
                             <field name="phone_no"/>
                             <field name="doctors_id"/>
                         </group>
